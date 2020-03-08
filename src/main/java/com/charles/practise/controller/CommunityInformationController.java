@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author wsl
  * @date
@@ -46,6 +49,21 @@ public class CommunityInformationController {
         resultPage.setLimits(limits);
         resultPage = communityInformationService.getUserList(areaName, resultPage);
         return resultPage;
+    }
+
+
+    /**
+     * 测试49数据库的接口
+     * @param areaName
+     * @return
+     */
+    @RequestMapping(value = "/wsl222")
+    public List<Map<String, Object>> findWaterCollect(
+            @RequestParam(value = "areaName", defaultValue = "", required = false) String areaName
+    ) {
+        List<Map<String, Object>> result = communityInformationService.getUserList(areaName);
+        return result;
+
     }
 
 }

@@ -5,11 +5,10 @@ import com.charles.practise.mapper.CommunityInformationMapper;
 import com.charles.practise.service.ICommunityInformationService;
 import com.charles.practise.tools.ResultPage;
 import com.charles.practise.tools.ResultUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +43,17 @@ public class CommunityInformationServiceImpl implements ICommunityInformationSer
         ResultPage resultPage = ResultUtils.ofSuccessResultPage(result, result == null ? 0 : result.size(), limits,
                 currentPage, pageSize.get(2), count);
         return resultPage;
+    }
+
+    /**
+     * @param areaName
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> getUserList(@Param(value = "areaName")String areaName) {
+        List<Map<String,Object>> result=null;
+        result=communityInformationMapper.getUserList(areaName);
+        return result;
     }
 
 }

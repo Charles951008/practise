@@ -1,6 +1,5 @@
 package com.charles.practise.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -35,4 +34,11 @@ public interface CommunityInformationMapper {
      */
     Integer getCommunityNum(
             @Param(value = "areaName") String areaName);
+
+    /**
+     * 111
+     * @param areaName
+     * @return
+     */
+    List<Map<String,Object>> getUserList(@Param(value = "areaName") String areaName);
 }

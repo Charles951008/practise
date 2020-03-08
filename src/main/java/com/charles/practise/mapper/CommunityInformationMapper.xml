@@ -33,4 +33,12 @@
             and 区县=#{areaName}
         </if>
     </select>
+
+    <select id="getUserList" resultType="java.util.HashMap">
+        select t.* from gis_jishui t
+        where 1=1
+        <if test="areaName!=null and areaName!=''">
+            and t.QUYU=#{areaName}
+        </if>
+    </select>
 </mapper>
